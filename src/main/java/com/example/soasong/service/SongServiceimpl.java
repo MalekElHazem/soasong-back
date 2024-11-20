@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.soasong.entities.Genre;
 import com.example.soasong.entities.Song;
+import com.example.soasong.repos.ImageRepository;
 import com.example.soasong.repos.SongRepository;
 
 @Service
@@ -15,18 +16,32 @@ public class SongServiceimpl implements SongService{
 	
 	@Autowired
     private SongRepository songRepository;
+	
+	@Autowired
+	ImageRepository imageRepository;
 
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	@Override
 	public Song saveSong(Song s) {
 		return songRepository.save(s); 
 	}
+/*
+	@Override	
+	public Song updateSong(Song s) {
+		return songRepository.save(s);
+	}*/
 
 	@Override
 	public Song updateSong(Song s) {
-		return songRepository.save(s);
+		//Long oldSongImageId = this.getSong(s.getIdSong()).getImage().getIdImage();
+		//Long newSongImageId = s.getImage().getIdImage();
+		Song prodUpdated = songRepository.save(s);
+		//if (oldSongImageId != newSongImageId) //si l'image a été modifiée
+			//imageRepository.deleteById(oldSongImageId);
+			return prodUpdated;
 	}
 
+	
 	@Override
 	public void deleteSong(Song s) {
 		songRepository.delete(s);

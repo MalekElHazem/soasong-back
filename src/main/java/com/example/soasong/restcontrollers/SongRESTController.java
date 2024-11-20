@@ -33,12 +33,14 @@ public class SongRESTController {
         return songService.getSong(id);
     }
     
+    
     @RequestMapping(path="/addsong",method = RequestMethod.POST)
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public Song createSong(@RequestBody Song song) {
         return songService.saveSong(song);
-    }
+    }	
     
+  
     // Added path variable version for more explicit updates
     @RequestMapping(value="/updatesong/{id}",method = RequestMethod.PUT)
     public Song updateSongWithId(@PathVariable("id") Long id, @RequestBody Song song) {

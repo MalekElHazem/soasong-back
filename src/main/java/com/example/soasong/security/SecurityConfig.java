@@ -36,10 +36,13 @@ public class SecurityConfig {
                     return config;
                 }
             }).and()
+            
             .authorizeHttpRequests()
 			.anyRequest().permitAll();
+            
             /*.authorizeHttpRequests(requests -> requests
                 .requestMatchers("/api/all/**").hasAnyAuthority("ADMIN", "USER")
+                .requestMatchers(HttpMethod.POST, "/api/addsong/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/api/getbyid/**").hasAnyAuthority("ADMIN", "USER")
                 .requestMatchers(HttpMethod.PUT, "/api/updatesong/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/api/delsong/**").hasAuthority("ADMIN")

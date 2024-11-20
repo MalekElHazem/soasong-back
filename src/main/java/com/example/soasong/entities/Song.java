@@ -1,12 +1,15 @@
 package com.example.soasong.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Song {
@@ -22,7 +25,28 @@ public class Song {
 	@ManyToOne
 	private Genre genre;
 	
+	/*@OneToOne
+	private Image image;*/
 	
+	@OneToMany(mappedBy = "song")
+	 private List<Image> images;
+	
+	
+	
+
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
+
+
 	public Genre getGenre() {
 		return genre;
 	}

@@ -13,9 +13,10 @@ import com.example.soasong.repos.GenreRepository;
 
 @RestController
 @RequestMapping("/api/gen")
-@CrossOrigin(
+/*@CrossOrigin(
 		   origins = {"http://localhost:4200"}
-		)
+		)*/
+@CrossOrigin("*")
 public class GenreRESTController {
 	@Autowired
 	GenreRepository genreRepository;

@@ -48,11 +48,17 @@ public class SongServiceimpl implements SongService{
 		
 	}
 
-	@Override
+	/*@Override
 	public void deleteSongById(Long id) {
 		songRepository.deleteById(id);
 		
 	}
+*/
+	public void deleteSongById(Long id) {
+        Song song = songRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid song ID"));
+        imageRepository.deleteAll(song.getImages());
+        songRepository.delete(song);
+    }
 
 	@Override
 	public Song getSong(Long id) {

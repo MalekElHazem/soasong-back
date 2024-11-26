@@ -3,6 +3,7 @@ package com.example.soasong.entities;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +14,6 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Song {
-	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idSong;
@@ -28,11 +28,17 @@ public class Song {
 	/*@OneToOne
 	private Image image;*/
 	
+	//@OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
+
 	@OneToMany(mappedBy = "song")
 	 private List<Image> images;
 	
 	
-	
+	 /*public void deleteSongById(Long id) {
+        Song song = songRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid song ID"));
+        imageRepository.deleteAll(song.getImages());
+        songRepository.delete(song);
+    }*/
 
 
 	public List<Image> getImages() {

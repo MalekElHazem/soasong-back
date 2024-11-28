@@ -5,10 +5,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+
 import com.example.soasong.entities.Genre;
 import com.example.soasong.entities.Song;
 
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
 @SpringBootApplication
+@EnableDiscoveryClient
 public class SoasongApplication implements CommandLineRunner {
    
    @Autowired

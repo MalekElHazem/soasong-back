@@ -30,7 +30,9 @@ public class Song {
 	
 	//@OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
 
-	@OneToMany(mappedBy = "song")
+	//@OneToMany(mappedBy = "song")
+	@OneToMany(mappedBy = "song", cascade = CascadeType.ALL)
+
 	 private List<Image> images;
 	
 	

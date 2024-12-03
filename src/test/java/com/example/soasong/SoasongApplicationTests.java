@@ -10,7 +10,7 @@ import com.example.soasong.repos.SongRepository;
 import java.util.Date;
 import java.util.List;
 
-@SpringBootTest
+@SpringBootTest(classes = SoasongApplication.class)
 class SoasongApplicationTests {
 
 	@Autowired
